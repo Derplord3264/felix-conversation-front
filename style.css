@@ -37,6 +37,7 @@ h1 {
 .user-message {
     text-align: right;
     margin: 5px 0;
+    animation: float-up 0.5s ease-out;
 }
 
 .ai-message {
@@ -69,4 +70,15 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
