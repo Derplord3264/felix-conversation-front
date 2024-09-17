@@ -23,7 +23,10 @@
         chatForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const userMessage = userInput.value;
-            chatBox.innerHTML += `<div class="user-message">${userMessage}</div>`;
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.classList.add('user-message');
+            userMessageDiv.textContent = userMessage;
+            chatBox.appendChild(userMessageDiv);
             userInput.value = '';
 
             const response = await fetch('/chat', {
@@ -34,7 +37,10 @@
                 body: JSON.stringify({ prompt: userMessage })
             });
             const data = await response.json();
-            chatBox.innerHTML += `<div class="ai-message">${data.response}</div>`;
+            const aiMessageDiv = document.createElement('div');
+            aiMessageDiv.classList.add('ai-message');
+            aiMessageDiv.textContent = data.response;
+            chatBox.appendChild(aiMessageDiv);
         });
     </script>
 </body>
